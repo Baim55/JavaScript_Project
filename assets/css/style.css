@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 80%;
+    margin: auto;
+}
+
+.mynavbar{
+    width: 1530px;
+    height: 158px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 156px;
+    height: 40px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+.search{
+    width: 504px;
+    height: 48px;
+    color: #F7F9FC;
+    top: 76px;
+
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.dropdown{
+    list-style: none;
+}
+
+.wrapper .btn{
+    font-size: 14px;
+}
+
