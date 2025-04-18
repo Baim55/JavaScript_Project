@@ -1,51 +1,156 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{
-    max-width: 80%;
-    margin: auto;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
-.mynavbar{
-    width: 1530px;
-    height: 158px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container {
+  max-width: 80%;
+  margin: auto;
 }
 
-.logo{
-    width: 156px;
-    height: 40px;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 100%;
-    font-family: "Poppins", sans-serif;
+.mynavbar {
+  width: 100%;
+  height: 108px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.search{
-    width: 504px;
-    height: 48px;
-    color: #F7F9FC;
-    top: 76px;
-
+.logo {
+  font-size: 40px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
 }
 
-.wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
+.search_area {
+  position: relative;
+  width: 504px;
 }
 
-.dropdown{
-    list-style: none;
+#search {
+  width: 95%;
+  height: 48px;
+  background-color: #f7f9fc;
+  border: none;
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
-.wrapper .btn{
-    font-size: 14px;
+.search_area i {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  color: #888;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.wrapper .btn {
+  font-size: 14px;
+}
+
+.wrapper .icon {
+  padding-right: 10px;
+}
+
+/* section2 */
+
+#handbag {
+  background-color: #ffe2e0;
+  height: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.discount-text {
+  color: #df4244;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.handbag-title {
+  font-weight: 700;
+  font-size: 40px;
+  color: #212121;
+}
+
+.handbag-description {
+  font-size: 16px;
+}
+
+.shop-btn {
+  background-color: #206363;
+  width: 192px;
+  height: 52px;
+  color: #ffffff;
+  border-radius: 8px;
+  border: none;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 992px) and (max-width: 1422px) {
+  .mynavbar {
+    height: auto;
+    margin: 20px 0;
+  }
+
+  .search_area {
+    width: 40%;
+  }
+}
+
+@media (max-width: 992px) {
+  .mynavbar {
+    height: auto;
+  }
+
+  .search_area {
+    width: 40%;
+  }
+
+  .wrapper {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .hand {
+    margin-top: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .handbag-section {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    font-size: 28px;
+  }
+
+  .wrapper .btn {
+    font-size: 12px;
+  }
+}
