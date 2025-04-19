@@ -162,27 +162,76 @@ body {
   border: none;
 }
 
-.user-card .image img{
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-}
-
-.user-card {
+.profile-table {
+  width: 100%;
   background-color: #fff;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.user-card .list-group-item {
+.profile-header {
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-header h6 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.client-code {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.menu-item {
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #333;
   cursor: pointer;
-  padding-left: 0;
-  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.user-card .list-group-item:hover,
-.user-card .active-link {
-  color: #df4244;
-  font-weight: 500;
+.menu-item:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.menu-item i {
+  font-size: 16px;
+  color: #666;
+}
+
+.menu-item.active {
+  border-left: 4px solid #007878; 
+  background-color: #f5f5f5;
+  color: #000;
+  font-weight: 600;
+}
+
+.favori a{
+  text-decoration: none;
+  color: #1D1D1D;
+}
+
+.favori{
+  color: #1D1D1D;
 }
 
 @media (min-width: 992px) and (max-width: 1450px) {

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let users = JSON.parse(localStorage.getItem("users"))||[];
+  let users = JSON.parse(localStorage.getItem("users")) || [];
   let currentUser = users.find((user) => user.isLogined === true);
   let userWishlist = currentUser.wishlist;
   let userBtn = document.querySelector(".username");
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     login.classList.remove("d-none");
     logout.classList.add("d-none");
   }
+  
   function createWishlistItem() {
     userWishlist.forEach((product) => {
-
       const col = document.createElement("div");
       col.className = "col-md-12 col-lg-6";
 
@@ -30,8 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `product_detail.html?id=${product.id}`;
       });
 
-      let heartIcon = document.createElement("i");
-      heartIcon.classList.add("fa-solid", "fa-xmark", "fa-xl");
+      let closeIcon = document.createElement("i");
+      closeIcon.classList.add("fa-solid", "fa-xmark", "fa-xl");
+
+      closeIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        removeWishlistItem(product.id);
+      });
 
       let wishlistItem = document.createElement("div");
       wishlistItem.classList.add("wishlist-item");
@@ -78,13 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
       cardRating.append(cardReviewsCount);
       cardFooter.append(cardPrice, cardRating);
       cardContent.append(cardRate, cardTitle, cardFooter, addBtn);
-      card.append(heartIcon, cardImage, cardContent);
+      card.append(closeIcon, cardImage, cardContent);
       cardImage.appendChild(img);
 
       let cards = document.querySelector(".cards");
       cards.appendChild(col);
       col.appendChild(card);
     });
+  }
+  function removeWishlistItem(productId) {
+    let userIndex = users.findIndex((user) => user.id == currentUser.id);
+    let findProductIndex = currentUser.wishlist.findIndex(
+      (product) => product.id == productId
+    );
+    if (findProductIndex != -1) {
+      currentUser.wishlist.splice(findProductIndex, 1);
+      users[userIndex] = currentUser;
+      localStorage.setItem("users", JSON.stringify(users));
+      sweetToast("Product removed from wishlist...");
+      window.location.reload();
+    }
+    currentUser.wishlist;
   }
 
   createWishlistItem();
