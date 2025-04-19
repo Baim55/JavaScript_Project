@@ -29,89 +29,156 @@
 
   <body>
     <header>
-        <div class="container">
-            <div class="row">
-              <nav class="mynavbar">
-                <div class="logo">Snobella</div>
-                <div class="search_area">
-                  <label for="search"></label
-                  ><i class="fa-solid fa-magnifying-glass fa-xl"></i>
-                  <input type="search" id="search" placeholder="Search all product" />
-                </div>
-                <div class="wrapper">
-                  <div class="dropdown">
-                    <button class="btn" type="button" data-bs-toggle="dropdown">
-                      <img src="assets/icons/avatar 1.svg" alt="" class="icon" />Sign
-                      up
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item register" href="register.html"
-                          >Register</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item login" href="login.html">Login</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item logout d-none" href="#">Logout</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="wishlist">
-                    <button class="btn">
-                      <img
-                        src="assets/icons/heart (2).svg"
-                        alt=""
-                        class="icon"
-                      />Wishlist
-                    </button>
-                  </div>
-                  <div class="basket">
-                    <button class="btn">
-                      <img src="assets/icons/bag.svg" alt="" class="icon" />Basket
-                    </button>
-                  </div>
-                </div>
-              </nav>
+      <div class="container">
+        <div class="row">
+          <nav class="mynavbar">
+            <div class="logo">Snobella</div>
+            <div class="search_area">
+              <label for="search"></label
+              ><i class="fa-solid fa-magnifying-glass fa-xl search-icon"></i>
+              <input
+                type="text"
+                id="search"
+                placeholder="Search all product"
+                class="search-input"
+              />
             </div>
-          </div>
+            <div class="wrapper">
+              <button class="btn username">Username</button>
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown">
+                  <img
+                    src="assets/icons/avatar 1.svg"
+                    alt=""
+                    class="icon"
+                  />Sign up
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item register" href="register.html"
+                      >Register</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item login" href="login.html">Login</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item logout d-none" href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="wishlist">
+                <button class="btn">
+                  <a href="wishlist.html"
+                    ><img
+                      src="assets/icons/heart (2).svg"
+                      alt=""
+                      class="icon"
+                    />Wishlist</a
+                  >
+                </button>
+              </div>
+              <div class="basketIcon">
+                <button class="btn">
+                  <a href="basket.html"
+                    ><img src="assets/icons/bag.svg" alt="" class="icon" /><sup
+                      style="font-size: 13px; margin-right: 5px"
+                      >0</sup
+                    >Basket</a
+                  >
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
     </header>
 
     <main>
-        <section id="handbag">
-            <div class="container handbag-section">
-                <div class="row align-items-center">
-                  <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 mt-5">
-                    <p class="discount-text">30% off</p>
-                    <h1 class="handbag-title">Handbag products</h1>
-                    <p class="handbag-description">
-                      It is a long established fact that a reader will be distracted by the readable content
-                      of a page when looking at its layout. Explore our collection today!
-                    </p>
-                    <button class="btn shop-btn">Shop now</button>
-                  </div>
-                  <div class="col-lg-6 col-md-12 handbag_image text-center">
-                    <img src="assets/images/7771326b48a2887aa224f1621090d07b 1 (2).png" alt="Handbags" class="img-fluid">
-                  </div>
+      <section id="handbag">
+        <div class="container handbag-section">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 mt-5">
+              <p class="discount-text">30% off</p>
+              <h1 class="handbag-title">Handbag products</h1>
+              <p class="handbag-description">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                Explore our collection today!
+              </p>
+              <button class="btn shop-btn">Shop now</button>
+            </div>
+            <div class="col-lg-6 col-md-12 handbag_image text-center">
+              <img
+                src="assets/images/7771326b48a2887aa224f1621090d07b 1 (2).png"
+                alt="Handbags"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-6">
+              <h3 style="font-weight: 600">Products</h3>
+            </div>
+            <div class="col-md-6">
+              <p class="view">
+                View all products <i class="fa fa-chevron-right"></i>
+              </p>
+            </div>
+            <div class="filter-panel">
+              <div class="dropdown" style="background-color: #ffe2e0;">
+                <button class="btn" type="button" data-bs-toggle="dropdown">
+                  Sort by :
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item az" href="#">A to Z</a>
+                    <a class="dropdown-item za" href="#">Z to A</a>
                 </div>
               </div>
-        </section>
+              <div class="dropdown" style="background-color: #ffe2e0;">
+                <button class="btn" type="button" data-bs-toggle="dropdown">
+                  Price :
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item high" href="#">High to low</a>
+                    <a class="dropdown-item low" href="#">Low to high</a>
+                </div>
+              </div>
+            </div>
+            <div class="row cards mt-3">
+              <!-- <div class="card">
+                <div class="card-image">
+                  <img
+                    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                    alt="Fjallraven Backpack"
+                  />
+                </div>
+                <div class="card-content">
+                  <h2 class="card-title">Fjallraven - Foldsack No. 1 Backpack</h2>
+                  <p class="card-category">Category: Men's Clothing</p>
+                  <p class="card-description">
+                    Your perfect pack for everyday use and walks in the forest.
+                    Stash your laptop (up to 15 inches) in the padded sleeve.
+                  </p>
+                  <div class="card-footer">
+                    <span class="card-price">$109.95</span>
+                    <div class="card-rating">
+                      <span>⭐ 3.9</span>
+                      <span>(120 reviews)</span>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script
       type="text/javascript"

@@ -54,7 +54,11 @@ body {
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 30px;
+}
+
+.wrapper a{
+  color: black;
+  text-decoration: none;
 }
 
 .wrapper .btn {
@@ -62,7 +66,7 @@ body {
 }
 
 .wrapper .icon {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 /* section2 */
@@ -102,12 +106,126 @@ body {
   border: none;
 }
 
+.shop-btn:hover{
+  background-color: #154242;
+  color: #ffffff;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
 }
 
-@media (min-width: 992px) and (max-width: 1422px) {
+/*section3*/
+
+
+.products .row{
+  justify-content: space-between;
+}
+
+.view{
+  float: right;
+}
+
+.filter-panel{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards{
+  justify-content: space-between;
+}
+
+.card {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  background-color: #F9F9F9;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.card-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 260px;
+}
+
+.card-image img {
+  width: 218px;
+  height: 248px;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 15px;
+  color: #333333;
+}
+
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  border-top: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.card-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #F75145;
+  margin-right: 5px;
+}
+
+.card-rating {
+  font-size: 14px;
+  color: #ff9800;
+}
+
+.card-rate{
+  margin-bottom: 30px;
+}
+
+.card-rating span:last-child {
+  color: #363636BF;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.card-heart {
+  font-size: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #DF4244;
+}
+
+.cards .btn{
+  width: 100%;
+  border: 1px solid #212121;
+  background-color: transparent;
+  margin-top: 15px;
+  height: 48px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.cards .btn:hover{
+  background-color: #DF4244;
+  color: #ffffff;
+  border: none;
+}
+
+@media (min-width: 992px) and (max-width: 1450px) {
   .mynavbar {
     height: auto;
     margin: 20px 0;
@@ -137,6 +255,7 @@ body {
   .hand {
     margin-top: 400px;
   }
+
 }
 
 @media (max-width: 768px) {
