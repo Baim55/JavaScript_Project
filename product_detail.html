@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail</title>
+    <script src="https://kit.fontawesome.com/925f445a4b.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/product_detail.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <nav class="mynavbar">
+            <div class="logo">Snobella</div>
+            <div class="search_area">
+              <label for="search"></label
+              ><i class="fa-solid fa-magnifying-glass fa-xl search-icon"></i>
+              <input
+                type="text"
+                id="search"
+                placeholder="Search all product"
+                class="search-input"
+              />
+            </div>
+            <div class="wrapper">
+              <button class="btn username">Username</button>
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown">
+                  <img
+                    src="assets/icons/avatar 1.svg"
+                    alt=""
+                    class="icon"
+                  />Sign up
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item register" href="register.html"
+                      >Register</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item login" href="login.html">Login</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item logout d-none" href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="wishlist">
+                <button class="btn">
+                  <a href="wishlist.html"
+                    ><img
+                      src="assets/icons/heart (2).svg"
+                      alt=""
+                      class="icon"
+                    />Wishlist</a
+                  >
+                </button>
+              </div>
+              <div class="basketIcon">
+                <button class="btn">
+                  <a href="basket.html"
+                    ><img src="assets/icons/bag.svg" alt="" class="icon" /><sup
+                      style="font-size: 13px; margin-right: 5px"
+                      >0</sup
+                    >Basket</a
+                  >
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="product-container">
+            <!-- <div class="product-image">
+              <img class="img" src="" alt="">
+            </div>
+            <div class="product-details">
+              <h4 class="product-title"></h4>
+              <p class="product-category"></p>
+              <p class="product-price"></p>
+              <p class="product-description"></p>
+              <div class="product-rating">
+                <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i></span>
+                <span>(reviews)</span>
+              </div>
+              <div class="quantity-selector">
+                <button class="btn-minus">-</button>
+                <input type="number" value="1" min="1">
+                <button class="btn-plus">+</button>
+              </div>
+              <button class="btn btn-danger add-to-cart-btn"></button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./assets/js/product_detail.js"></script>
+  </body>
+</html>
