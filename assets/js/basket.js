@@ -48,6 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteAllBtn = document.querySelector(".deleteAllBtn");
   deleteAllBtn.addEventListener("click", deleteAll);
 
+  let confirmCart = document.querySelector(".confirm-card");
+      confirmCart.addEventListener("click", () => {
+        if (basket.length === 0) {
+          sweetToast("Your basket is empty!");
+        } else {
+          sweetToast("Your order has been confirmed!");
+        }
+      });
+
   function createBasketItem() {
     let basketArea = document.querySelector(".basket");
     basketArea.innerHTML = "";
