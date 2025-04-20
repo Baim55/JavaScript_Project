@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let products = await (await fetch("http://localhost:3000/products")).json();
   console.log(products);
 
-  let filterProducts = [...products];
+  let filterProducts = [...products]
 
   if (currentUser) {
     register.classList.add("d-none");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     sortProductZa();
     localStorage.setItem("sortType", "Z-A");
   });
-
+  
   let isSorted = false;
   let sortType = localStorage.getItem("sortType");
   if (sortType === "A-Z") {
@@ -63,11 +63,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     sortProductZa();
     isSorted = true;
   }
-
+  
   //price
   let highBtn = document.querySelector(".high");
   let lowBtn = document.querySelector(".low");
-
+  
   function filterByHighPrice() {
     filterProducts = products.sort((a, b) => b.price - a.price);
     document.querySelector(".cards").innerHTML = "";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     filterByHighPrice();
     localStorage.setItem("priceType", "high-to-low");
   });
-
+  
   function filterByLowPrice() {
     filterProducts = products.sort((a, b) => a.price - b.price);
     document.querySelector(".cards").innerHTML = "";
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     filterByLowPrice();
     localStorage.setItem("priceType", "low-to-high");
   });
-
+  
   let isFiltered = false;
   let priceType = localStorage.getItem("priceType");
   if (priceType === "high-to-low") {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     filterByLowPrice();
     isFiltered = true;
   }
-
+  
   if (!isSorted && !isFiltered) {
     createUserCard(filterProducts);
   }
@@ -110,14 +110,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function searchProduct() {
     let searchValue = searchInput.value;
-    filterProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(searchValue.trim().toLowerCase())
-    );
+    filterProducts = products.filter((product) => product.title.toLowerCase().includes(searchValue.trim().toLowerCase()));
     document.querySelector(".cards").innerHTML = "";
     createUserCard(filterProducts);
   }
-  searchIcon.addEventListener("click", searchProduct);
-  searchInput.addEventListener("keyup", searchProduct);
+  searchIcon.addEventListener("click",searchProduct)
+  searchInput.addEventListener("keyup",searchProduct)
 
   let logoutUserFunction = () => {
     if (currentUser) {
@@ -144,13 +142,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   logout.addEventListener("click", logoutUserFunction);
 
   function createUserCard(filterProducts) {
-    let cards = document.querySelector(".cards");
-    cards.innerHTML = "";
+    
     filterProducts.forEach((product) => {
-      
       const col = document.createElement("div");
       col.className = "col-sm-12 col-md-6 col-lg-4";
-
       let card = document.createElement("div");
       card.classList.add("card");
       card.addEventListener("click", () => {

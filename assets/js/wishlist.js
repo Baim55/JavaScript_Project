@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   let users = JSON.parse(localStorage.getItem("users")) || [];
   let currentUser = users.find((user) => user.isLogined === true);
-  let userWishlist = currentUser.wishlist;
+  let userIndex = users.findIndex((user) => user.id == currentUser?.id);
   let userBtn = document.querySelector(".username");
   userBtn.textContent = currentUser ? currentUser.username : "Username";
-
+  let basket = currentUser?.basket;
   let login = document.querySelector(".login");
   let register = document.querySelector(".register");
   let logout = document.querySelector(".logout");
@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     login.classList.remove("d-none");
     logout.classList.add("d-none");
   }
-  
+
   function createWishlistItem() {
+    let userWishlist = currentUser?.wishlist || [];
+
     userWishlist.forEach((product) => {
       const col = document.createElement("div");
       col.className = "col-md-12 col-lg-6";
@@ -32,14 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let closeIcon = document.createElement("i");
       closeIcon.classList.add("fa-solid", "fa-xmark", "fa-xl");
-
       closeIcon.addEventListener("click", (e) => {
         e.stopPropagation();
         removeWishlistItem(product.id);
       });
-
-      let wishlistItem = document.createElement("div");
-      wishlistItem.classList.add("wishlist-item");
 
       let cardImage = document.createElement("div");
       cardImage.classList.add("card-image");
@@ -66,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let cardRate = document.createElement("img");
       cardRate.classList.add("card-rate");
-      cardRate.textContent = product.rating.rate;
       cardRate.src = "assets/images/Group 25546.png";
 
       let cardReviewsCount = document.createElement("span");
@@ -74,37 +71,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let addBtn = document.createElement("button");
       addBtn.classList.add("btn", "add-to-cart");
-      addBtn.textContent = "Add to card";
+      addBtn.textContent = "Add to cart";
       addBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        addBasket(product.id, products);
+        addBasket(product.id);
       });
 
       cardRating.append(cardReviewsCount);
       cardFooter.append(cardPrice, cardRating);
       cardContent.append(cardRate, cardTitle, cardFooter, addBtn);
-      card.append(closeIcon, cardImage, cardContent);
       cardImage.appendChild(img);
-
-      let cards = document.querySelector(".cards");
-      cards.appendChild(col);
+      card.append(closeIcon, cardImage, cardContent);
       col.appendChild(card);
+
+      document.querySelector(".cards").appendChild(col);
     });
   }
+
   function removeWishlistItem(productId) {
-    let userIndex = users.findIndex((user) => user.id == currentUser.id);
-    let findProductIndex = currentUser.wishlist.findIndex(
-      (product) => product.id == productId
-    );
-    if (findProductIndex != -1) {
-      currentUser.wishlist.splice(findProductIndex, 1);
+    let findIndex = currentUser.wishlist.findIndex((p) => p.id === productId);
+    if (findIndex !== -1) {
+      currentUser.wishlist.splice(findIndex, 1);
       users[userIndex] = currentUser;
       localStorage.setItem("users", JSON.stringify(users));
       sweetToast("Product removed from wishlist...");
       window.location.reload();
     }
-    currentUser.wishlist;
   }
+
+  const deleteAllBtn = document.querySelector(".deleteAllBtn");
+  deleteAllBtn.addEventListener("click", () => {
+    currentUser.wishlist = [];
+    users[userIndex] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+    sweetToast("All wishlist items removed");
+    window.location.reload();
+  });
+
+  function addBasket(productId, products) {
+    if (!currentUser) {
+      sweetToast("Please log in");
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 3000);
+      return;
+    }
+
+    let basket = currentUser.basket || [];
+    let findProduct = basket.find((product) => product.id == productId);
+
+    if (findProduct) {
+      findProduct.count++;
+    } else {
+      let existProduct = products.find((product) => product.id == productId);
+      basket.push({ ...existProduct, count: 1 });
+    }
+    currentUser.basket = basket;
+    users[userIndex].basket = basket;
+    localStorage.setItem("users", JSON.stringify(users));
+    sweetToast("Product added basket successfully...");
+    basketCaunt();
+  }
+
+  function basketCaunt() {
+    let basketItemCount = (basket || []).reduce(
+      (acc, product) => acc + product.count,
+      0
+    );
+
+    let basketCountElem = document.querySelector(".basketIcon sup");
+    basketCountElem.textContent = basketItemCount;
+  }
+  basketCaunt();
 
   createWishlistItem();
 });

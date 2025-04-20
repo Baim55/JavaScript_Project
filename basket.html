@@ -21,7 +21,69 @@
   </head>
   <body>
     <header>
-      <h1>Your Basket</h1>
+      <div class="container">
+        <div class="row">
+          <nav class="mynavbar">
+            <div class="logo">Snobella</div>
+            <div class="search_area">
+              <label for="search"></label
+              ><i class="fa-solid fa-magnifying-glass fa-xl search-icon"></i>
+              <input
+                type="text"
+                id="search"
+                placeholder="Search all product"
+                class="search-input"
+              />
+            </div>
+            <div class="wrapper">
+              <button class="btn username">Username</button>
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown">
+                  <img
+                    src="assets/icons/avatar 1.svg"
+                    alt=""
+                    class="icon"
+                  />Sign up
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item register" href="register.html"
+                      >Register</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item login" href="login.html">Login</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item logout d-none" href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="wishlist">
+                <button class="btn">
+                  <a href="wishlist.html"
+                    ><img
+                      src="assets/icons/heart (2).svg"
+                      alt=""
+                      class="icon"
+                    />Wishlist</a
+                  >
+                </button>
+              </div>
+              <div class="basketIcon">
+                <button class="btn">
+                  <a href="basket.html"
+                    ><img src="assets/icons/bag.svg" alt="" class="icon" /><sup
+                      style="font-size: 13px; margin-right: 5px"
+                      >0</sup
+                    >Basket</a
+                  >
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
     </header>
     <main>
       <section class="basket-container">

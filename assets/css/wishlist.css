@@ -169,6 +169,7 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 20px;
 }
 
 .profile-header {
@@ -232,6 +233,10 @@ body {
 
 .favori{
   color: #1D1D1D;
+}
+
+.deleteAllBtn{
+  background-color: #DF4244;
 }
 
 @media (min-width: 992px) and (max-width: 1450px) {
