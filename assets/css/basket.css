@@ -98,13 +98,12 @@ body {
   height: 250px;
 }
 
-.image img{
+.image img {
   width: 200px;
   justify-content: center;
   align-items: center;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 }
-
 
 .count-area {
   display: flex;
@@ -116,7 +115,8 @@ body {
   height: 40px;
 }
 
-.btn-dangerBtn,.wishlistBtn {
+.btn-dangerBtn,
+.wishlistBtn {
   display: flex;
   background-color: white;
   color: #212121bf;
@@ -137,7 +137,7 @@ body {
   font-weight: 600;
 }
 
-.title{
+.title {
   font-weight: 600;
 }
 
@@ -147,6 +147,8 @@ body {
   align-items: center;
   gap: 10px;
 }
+
+
 
 .btn-dangerBtn,
 .wishlistBtn {
@@ -160,10 +162,11 @@ body {
   font-size: 14px;
 }
 
-
-.wish,.dump{
+.wish,
+.dump {
   margin-left: 10px;
 }
+
 
 .total {
   display: flex;
@@ -192,6 +195,84 @@ body {
   font-size: 1.5rem;
   margin-top: 20px;
 }
+
+.quality {
+  width: 70px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #e4e4e4;
+}
+
+.totalBtn {
+  width: 100%;
+  height: 240px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.total-area {
+  padding: 20px;
+}
+
+.total-area p,
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.bottom span, .bottom h4{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.prome,.totalBtn button{
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #DBDBDB;
+}
+
+.totalBtn button{
+  background-color: #FF695E;
+  color: white;
+  width: 100px;
+}
+
+.add-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.add-cart button {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.add-cart .confirm-card{
+  height: 50px;
+  background-color: #DF4244;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.add-cart .cash{
+  height: 50px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.promo-wrapper {
+  display: flex;
+}
+
+.prome{
+  width: 100%;
+}
+
 
 #deleteAll {
   color: white;
@@ -240,9 +321,8 @@ body {
   }
 }
 
-
-@media (max-width:768px){
-  .image img{
+@media (max-width: 768px) {
+  .image img {
     width: 150px;
   }
 }
@@ -273,9 +353,7 @@ body {
     flex-wrap: wrap;
     gap: 20px;
   }
-
 }
-
 
 @media (max-width: 576px) {
   .logo {
@@ -284,5 +362,28 @@ body {
 
   .wrapper .btn {
     font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .total-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .total-area .prome {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .total-area button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width:882px){
+  .totalBtn{
+    height: 280px;
   }
 }

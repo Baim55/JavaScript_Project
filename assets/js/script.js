@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       let cardTitle = document.createElement("p");
       cardTitle.classList.add("card-title");
-      cardTitle.textContent = product.title;
+      cardTitle.textContent = `${product.title.slice(0, 30)}...`;
 
       let cardFooter = document.createElement("div");
       cardFooter.classList.add("card-footer");

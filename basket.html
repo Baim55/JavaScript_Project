@@ -100,7 +100,7 @@
           </p>
           <h3>Shopping bag</h3>
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8 col-sm-12">
               <div class="basket">
                 <!-- <div class="basket-item">
                     <div class="image">
@@ -121,12 +121,36 @@
                   </div> -->
               </div>
             </div>
-            <div class="col-md-5">
-
-            </div>
-
-            <div class="bottom">
-              <h4>Total: <span class="total-price">0</span></h4>
+            <div class="col-md-4 col-sm-12">
+              <div class="totalBtn">
+                <div class="total-area">
+                  <p class="d-flex">
+                    <span>Your Subtotal</span>
+                    <span>$20.60</span>
+                  </p>
+                  <p class="d-flex">
+                    <span>Shipping changes</span>
+                    <span>Free</span>
+                  </p>
+                  <div class="bottom">
+                    <h4>Total:</h4>
+                    <span class="total-price">0</span>
+                  </div>
+                  <hr style="border-style: dashed" />
+                  <div class="promo-wrapper">
+                    <input
+                      class="prome"
+                      type="text"
+                      placeholder="Discount promo code"
+                    />
+                    <button>Apply</button>
+                  </div>
+                </div>
+              </div>
+              <div class="add-cart">
+                <button class="confirm-card">Confirm cart</button>
+                <button class="cash">Cash payment</button>
+              </div>
             </div>
             <button id="deleteAll" class="btn btn-danger deleteAllBtn">
               Delete All

@@ -19,6 +19,32 @@ document.addEventListener("DOMContentLoaded", () => {
     logout.classList.add("d-none");
   }
 
+  let logoutUserFunction = () => {
+    if (currentUser) {
+      currentUser.isLogined = false;
+      currentUser.wishlist = [];
+      localStorage.setItem("users", JSON.stringify(users));
+      userBtn.textContent = "Username";
+      logout.classList.add("d-none");
+      login.classList.remove("d-none");
+      register.classList.remove("d-none");
+
+      let heartIcons = document.querySelectorAll(".card-heart");
+      heartIcons.forEach((icon) => {
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      });
+      let basketCountElem = document.querySelector(".basketIcon sup");
+      if (basketCountElem) {
+        basketCountElem.textContent = "0";
+      }
+      sweetToast("You log out successfully.");
+      window.location.reload();
+    }
+  };
+
+  logout.addEventListener("click", logoutUserFunction);
+
   function createWishlistItem() {
     let userWishlist = currentUser?.wishlist || [];
 
@@ -50,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let cardTitle = document.createElement("p");
       cardTitle.classList.add("card-title");
-      cardTitle.textContent = product.title;
+      cardTitle.textContent = `${product.title.slice(0, 30)}...`;
 
       let cardFooter = document.createElement("div");
       cardFooter.classList.add("card-footer");
