@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!findProduct) {
       let newProduct = products.find((product) => product.id == productId);
 
-      currentUser.wishlist.push(newProduct);
+      currentUser.wishlist.unshift(newProduct);
       sweetToast("Product added to wishlist...");
 
       heartIcon.classList.remove("fa-regular");
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       findProduct.count++;
     } else {
       let existProduct = products.find((product) => product.id == productId);
-      basket.push({ ...existProduct, count: 1 });
+      basket.unshift({ ...existProduct, count: 1 });
     }
     currentUser.basket = basket;
     users[userIndex].basket = basket;

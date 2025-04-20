@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   let currentUser = users.find((user) => user.isLogined === true);
-  let userIndex = users.findIndex((user) => user.id == currentUser?.id);
   let userBtn = document.querySelector(".username");
   let basket = currentUser?.basket;
   userBtn.textContent = currentUser ? currentUser.username : "Username";
@@ -138,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!findProduct) {
       let newProduct = products.find((product) => product.id == productId);
 
-      currentUser.wishlist.push(newProduct);
+      currentUser.wishlist.unshift(newProduct);
       sweetToast("Product added to wishlist...");
 
       heartIcon.classList.remove("fa-regular");
@@ -208,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         let existProduct = products.find((product) => product.id == productId);
         if (existProduct) {
-          userBasket.push({ ...existProduct, count: quantity });
+          userBasket.unshift({ ...existProduct, count: quantity });
         }
       }
 

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   let users = JSON.parse(localStorage.getItem("users")) || [];
   let currentUser = users.find((user) => user.isLogined === true);
   let userIndex = users.findIndex((user) => user.id == currentUser?.id);
@@ -45,8 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   logout.addEventListener("click", logoutUserFunction);
 
-  function createWishlistItem() {
+  async function createWishlistItem() {
     let userWishlist = currentUser?.wishlist || [];
+    let products = await (await fetch("http://localhost:3000/products")).json();
 
     userWishlist.forEach((product) => {
       const col = document.createElement("div");
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addBtn.textContent = "Add to cart";
       addBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        addBasket(product.id);
+        addBasket(product.id, products); // products ötürülür
       });
 
       cardRating.append(cardReviewsCount);
@@ -149,8 +150,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (findProduct) {
       findProduct.count++;
     } else {
-      let existProduct = products.find((product) => product.id == productId);
-      basket.push({ ...existProduct, count: 1 });
+      let existProduct = products?.find((product) => product.id == productId);
+
+      if (!existProduct) {
+        existProduct = currentUser.wishlist?.find(
+          (product) => product.id == productId
+        );
+      }
+
+      if (!existProduct) {
+        sweetToast("Product not found!");
+        return;
+      }
+
+      basket.unshift({ ...existProduct, count: 1 });
     }
     currentUser.basket = basket;
     users[userIndex].basket = basket;

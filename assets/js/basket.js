@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
           sweetToast("Your basket is empty!");
         } else {
           sweetToast("Your order has been confirmed!");
+          console.log(basket)
         }
       });
 
@@ -217,13 +218,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let existProduct = basket.find((product) => product.id == productId);
 
     if (existProduct) {
+      if (existProduct.count == 1) { 
+        minusBtn.setAttribute("disabled", "true");
+        return;
+      }
+  
       existProduct.count--;
       countElem.textContent = existProduct.count;
-      price.textContent = (existProduct.price * existProduct.count).toFixed(2);
-
-      if (existProduct.count == 1) {
-        minusBtn.setAttribute("disabled", "true");
-      }
+      price.textContent = (existProduct.price * existProduct.count).toFixed(2)
 
       users[userIndex].basket = basket;
       localStorage.setItem("users", JSON.stringify(users));
