@@ -23,24 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
       let basketItem = document.createElement("div");
       basketItem.classList.add("basket-item");
 
+
       let image = document.createElement("div");
       image.classList.add("image");
 
       let img = document.createElement("img");
       img.src = product.image;
-      image.appendChild(img);
+      image.appendChild(img)
+
+      let titleArea = document.createElement("div")
+      titleArea.classList.add("title-area")
 
       let title = document.createElement("h6");
       title.classList.add("title");
       title.textContent = product.title;
 
-      let category = document.createElement("p");
-      category.classList.add("category");
-      category.textContent = product.category;
-
       let price = document.createElement("p");
       price.classList.add("price");
-      price.textContent = (product.price*product.count).toFixed(2);
+      price.textContent = (product.price * product.count).toFixed(2);
 
       let countArea = document.createElement("div");
       countArea.classList.add("count-area");
@@ -63,16 +63,39 @@ document.addEventListener("DOMContentLoaded", () => {
         increment(product.id, countElem, minusBtn, price)
       );
 
+      let favorite=document.createElement("div")
+      favorite.classList.add("favorite")
+
+      let heart = document.createElement("i");
+      heart.classList.add("fa-regular","fa-heart","wish");
+
+      let wishlist = document.createElement("button");
+      wishlist.classList.add("wishlistBtn");
+
+      let trash = document.createElement("i");
+      trash.classList.add("fa-solid","fa-trash","dump");
+
       let removeBtn = document.createElement("button");
-      removeBtn.classList.add("btn", "btn-danger");
-      removeBtn.textContent = "Remove";
+      removeBtn.classList.add("btn-dangerBtn");
       removeBtn.addEventListener("click", () => removeBasketItem(product.id));
 
+      let area=document.createElement("div")
+      area.classList.add("area")
+
+      let size = document.createElement("p")
+      size.classList.add("size")
+      size.innerHTML = `Size: XS<br>Color: Grey<br>Delivery: 25-32 days<br>Quality`
+      
+      area.append(titleArea,size,favorite)
+      favorite.append(countArea,wishlist, removeBtn)
+      titleArea.append(title,price)
+      wishlist.append(heart,"Favorite")
+      removeBtn.append(trash,"Remove")
       countArea.append(minusBtn, countElem, plusBtn);
-      basketItem.append(image, title, category, price, countArea, removeBtn);
+      basketItem.append(image,area);
       basketArea.appendChild(basketItem);
     });
-    totalPrice()
+    totalPrice();
   }
 
   function totalPrice() {
@@ -99,13 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
     totalPrice();
   }
 
-  function increment(productId, countElem, minusBtn , price) {
+  function increment(productId, countElem, minusBtn, price) {
     let existProduct = basket.find((product) => product.id == productId);
 
     if (existProduct) {
       existProduct.count++;
       countElem.textContent = existProduct.count;
-      price.textContent = (existProduct.price * existProduct.count).toFixed(2)
+      price.textContent = (existProduct.price * existProduct.count).toFixed(2);
 
       if (existProduct.count > 1) {
         minusBtn.removeAttribute("disabled");
@@ -124,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (existProduct) {
       existProduct.count--;
       countElem.textContent = existProduct.count;
-      price.textContent = (existProduct.price * existProduct.count).toFixed(2)
+      price.textContent = (existProduct.price * existProduct.count).toFixed(2);
 
       if (existProduct.count == 1) {
         minusBtn.setAttribute("disabled", "true");
