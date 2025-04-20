@@ -23,6 +23,31 @@ document.addEventListener("DOMContentLoaded", () => {
     logout.classList.add("d-none");
   }
 
+  let logoutUserFunction = () => {
+    if (currentUser) {
+      currentUser.isLogined = false;
+      currentUser.wishlist = [];
+      localStorage.setItem("users", JSON.stringify(users));
+      userBtn.textContent = "Username";
+      logout.classList.add("d-none");
+      login.classList.remove("d-none");
+      register.classList.remove("d-none");
+
+      let heartIcons = document.querySelectorAll(".card-heart");
+      heartIcons.forEach((icon) => {
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      });
+      let basketCountElem = document.querySelector(".basketIcon sup");
+      if (basketCountElem) {
+        basketCountElem.textContent = "0";
+      }
+      sweetToast("You log out successfully.");
+      window.location.reload();
+    }
+  };
+
+  logout.addEventListener("click", logoutUserFunction);
 
   const getData = async () => {
     const response = await axios("http://localhost:3000/products");
@@ -40,9 +65,24 @@ document.addEventListener("DOMContentLoaded", () => {
     productContainer.innerHTML = `
       <div class="row">
         <div class="col-md-6">
-          <div class="product-image">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="thumbnail-slider">
+                <i class="fa fa-chevron-up"></i>
+              <div class="thumbnails">
+                <img src="assets/images/bag2.png" class="thumb active" />
+                <img src="assets/images/bag3.png" class="thumb" />
+                <img src="assets/images/bag1.png" class="thumb" />
+              </div>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+          </div>
+          <div class="col-md-10">
+            <div class="product-image">
             <img class="img" src="${findProduct.image}" alt="">
             <i class="fa-regular fa-heart card-heart"></i>
+          </div>
+          </div>
           </div>
         </div>
         <div class="col-md-6">
@@ -102,55 +142,64 @@ document.addEventListener("DOMContentLoaded", () => {
       <hr>
       <p class="product-description">${findProduct.description}</p>`;
 
+    const thumbs = document.querySelectorAll(".thumb");
+    const mainImage = document.querySelector(".product-image .img");
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        document.querySelector(".thumb.active").classList.remove("active");
+        thumb.classList.add("active");
+        mainImage.src = thumb.src;
+      });
+    });
 
-      let heartIcon = document.querySelector(".card-heart")
-  if (
-    currentUser &&
-    currentUser.wishlist.some((p) => p.id === findProduct.id)
-  ) {
-    heartIcon.classList.remove("fa-regular");
-    heartIcon.classList.add("fa-solid");
-  }
-
-  heartIcon.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (!currentUser || !currentUser.isLogined) {
-      sweetToast("Please log in");
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 3000);
-    } else {
-      addWishlist(findProduct.id, heartIcon, products);
-    }
-  });
-
-  function addWishlist(productId, heartIcon, products) {
-    let userIndex = users.findIndex((user) => user.id == currentUser.id);
-    let findProductIndex = currentUser.wishlist.findIndex(
-      (item) => item.id == productId
-    );
-
-    let findProduct = currentUser.wishlist.some(
-      (product) => product.id == productId
-    );
-
-    if (!findProduct) {
-      let newProduct = products.find((product) => product.id == productId);
-
-      currentUser.wishlist.unshift(newProduct);
-      sweetToast("Product added to wishlist...");
-
+    let heartIcon = document.querySelector(".card-heart");
+    if (
+      currentUser &&
+      currentUser.wishlist.some((p) => p.id === findProduct.id)
+    ) {
       heartIcon.classList.remove("fa-regular");
       heartIcon.classList.add("fa-solid");
-    } else {
-      currentUser.wishlist.splice(findProductIndex, 1);
-      sweetToast("Product removed to wishlist...");
-      heartIcon.classList.remove("fa-solid");
-      heartIcon.classList.add("fa-regular");
     }
-    users[userIndex].wishlist = currentUser.wishlist;
-    localStorage.setItem("users", JSON.stringify(users));
-  }
+
+    heartIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (!currentUser || !currentUser.isLogined) {
+        sweetToast("Please log in");
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      } else {
+        addWishlist(findProduct.id, heartIcon, products);
+      }
+    });
+
+    function addWishlist(productId, heartIcon, products) {
+      let userIndex = users.findIndex((user) => user.id == currentUser.id);
+      let findProductIndex = currentUser.wishlist.findIndex(
+        (item) => item.id == productId
+      );
+
+      let findProduct = currentUser.wishlist.some(
+        (product) => product.id == productId
+      );
+
+      if (!findProduct) {
+        let newProduct = products.find((product) => product.id == productId);
+
+        currentUser.wishlist.unshift(newProduct);
+        sweetToast("Product added to wishlist...");
+
+        heartIcon.classList.remove("fa-regular");
+        heartIcon.classList.add("fa-solid");
+      } else {
+        currentUser.wishlist.splice(findProductIndex, 1);
+        sweetToast("Product removed to wishlist...");
+        heartIcon.classList.remove("fa-solid");
+        heartIcon.classList.add("fa-regular");
+      }
+      users[userIndex].wishlist = currentUser.wishlist;
+      localStorage.setItem("users", JSON.stringify(users));
+    }
 
     const addToCartBtn = document.querySelector(".add-to-cart-btn");
     const quantityInput = document.querySelector(".quantity-input");
@@ -230,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   basketCaunt();
 
-  
   getData();
 });
 
